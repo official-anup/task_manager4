@@ -129,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Ensure the directory is created if it doesn't exist
+if not os.path.exists(STATIC_ROOT):
+    os.makedirs(STATIC_ROOT)
