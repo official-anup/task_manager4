@@ -14,7 +14,7 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('register/', views.register, name='register'),
 
-    path('', views.task_list, name='task_list'),
+    path('task', views.task_list, name='task_list'),
     
     path('tasks/<int:pk>/', views.task_detail, name='task_detail'),
     
