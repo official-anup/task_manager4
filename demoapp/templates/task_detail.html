@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+<h2>{{ task.title }}</h2>
+<p>{{ task.description }}</p>
+<p>Created at: {{ task.created_at }}</p>
+<p>Updated at: {{ task.updated_at }}</p>
+<p>Assigned to: {{ task.assigned_to }}</p>
+
+{% if user == task.owner or user == task.assigned_to %}
+    <a href="{% url 'task_update' task.pk %}" class="btn btn-primary">Edit Task</a>
+    
+    <form method="post" action="{% url 'task_delete' task.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Task</button>
+    </form>
+{% endif %}
+{% endblock %}
